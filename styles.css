@@ -3,16 +3,16 @@
   --card:  rgb(43, 49, 59);
   --shadow:  rgb(25, 27, 29);
   --input:  rgb(228, 239, 249);
-  --inputTxt:  rgb(20, 29, 38);
-  --enter:  rgb(129, 195, 245);
-  --enterTxt:  rgb(7, 0, 99);
+  --inputTxt:  white;
+  --enter:  rgb(163, 255, 122);
+  --enterTxt:  #57a01a;
 }
 
 body {
   background-color: var(--bg1);
   color: white;
   padding: 10%;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 180%;
   text-align: center;
 }
@@ -20,17 +20,18 @@ body {
 .div1 {
   border-radius: 18px;
   background-color: var(--card);
+  box-shadow: 5px 5px var(--shadow);
   height: fit-content;
   padding: 15% 5%;
-  box-shadow: 5px 5px var(--shadow);
 }
 
 .maintext {
-  margin: 0;
+  margin: 0 0 5px;
 }
 
 .subtext {
-  margin-top: 5px;
+  font-weight: lighter;
+  margin: 0;
 }
 
 .answer {
@@ -42,22 +43,31 @@ body {
 }
 
 .input {
-  background-color: var(--input);
+  background-color: var(--bg1);
   color: var(--inputTxt);
-  border-radius: 6px;
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: white;
   padding: 2%;
   width: 40%;
-  font-size: large;
+  font-size: 100%;
   font-weight: bolder;
+  text-align:center
 }
 
 .enter {
-  background-color: var(--enter);
-  color: var(--enterTxt);
+  background-color: var(--card);
+  box-shadow: 5px 5px var(--shadow);
+  color: var(--inputTxt);
   margin-left: 2%;
   padding: 2%;
-  border-radius: 6px;
+  border-radius: 26px;
+  border-width: 0;
   width: fit-content;
-  font-size: large;
+  font-size: 65%;
   font-weight: bolder;
+}
+
+.enter:active {
+  box-shadow: inset 5px 5px var(--shadow);
 }

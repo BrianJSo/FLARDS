@@ -17,6 +17,35 @@ body {
   text-align: center;
 }
 
+.input {
+  background-color: var(--bg1);
+  color: var(--inputTxt);
+  border-color: white;
+  padding: 2%;
+}
+
+.input::placeholder {
+  font-weight: lighter;
+  font-size: 80%;
+}
+
+.btn {
+  background-color: var(--card);
+  box-shadow: 5px 5px var(--shadow);
+  color: var(--inputTxt);
+  margin-left: 2%;
+  padding: 2%;
+  border-radius: 26px;
+  border-width: 0;
+  width: fit-content;
+  font-size: 65%;
+  font-weight: bolder;
+}
+
+.btn:active {
+  box-shadow: inset 5px 5px var(--shadow);
+}
+
 .div1 {
   border-radius: 18px;
   background-color: var(--card);
@@ -34,15 +63,27 @@ body {
   margin: 0;
 }
 
+.csv {
+  display: flex;
+  margin-top: 5%;
+  justify-content: center;
+  align-items:start;
+}
+
+.csv .input {
+  width: 60%;
+  height: 250px;
+  font-size: large
+}
+
 .answer {
   display: flex;
-  /* flex-direction: column; */
   margin-top: 10%;
   justify-content: center;
   align-items: center;
 }
 
-.input {
+.answer .input {
   background-color: var(--bg1);
   color: var(--inputTxt);
   outline: 0;
@@ -55,19 +96,6 @@ body {
   text-align:center
 }
 
-.enter {
-  background-color: var(--card);
-  box-shadow: 5px 5px var(--shadow);
-  color: var(--inputTxt);
-  margin-left: 2%;
-  padding: 2%;
-  border-radius: 26px;
-  border-width: 0;
-  width: fit-content;
-  font-size: 65%;
-  font-weight: bolder;
-}
-
-.enter:active {
-  box-shadow: inset 5px 5px var(--shadow);
+.hide {
+  display: none;
 }

@@ -6,7 +6,7 @@
   <script src="script.js"></script>
 </head>
 
-<body>
+<body onload="loadApp()">
 
   <div class="div1">
     <h1 class="maintext">FLARDS</h1>
@@ -15,7 +15,7 @@
 
   <div class="answer hide">
     <input class="input" placeholder="answer here..." type="text">
-    <button class="btn">ENTER</button>
+    <button class="btn" onclick="answer()">ENTER</button>
   </div>
 
   <div class="csv">

@@ -62,7 +62,7 @@ function nextItem() {
 function answer(){
   const answer = answerInput.value;
 
-  if (answerKey == answer){
+  if (answerKey.toLowerCase() == answer.toLowerCase()){
     score++;
   }
   else {

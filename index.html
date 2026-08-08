@@ -13,6 +13,11 @@
     <p class="subtext">a portmanteau for flash cards</p>
   </div>
 
+  <div class="card score hide">
+    <h1 class="maintext">Score</h1>
+    <p class="subtext">is your score</p>
+  </div>
+
   <div class="card prompt hide">
     <span class="counter">0/N</span>
     <h1 class="maintext">MainText</h1>
@@ -28,9 +33,18 @@
     <textarea class="input" placeholder="enter your csv here" name="" id="">
       input your csv here
     </textarea>
-    <button class="btn" onclick="loadCSV()">
-      Start Quiz
-    </button>
+    <div class="controls">
+      <button class="btn" onclick="loadCSV()">
+        START QUIZ
+      </button>
+      <div class="subtextControls">
+        <label class="switch">
+          <input type="checkbox" class="hide">
+          <span class="slider round"></span>
+        </label>
+        <span class="toggleLabel">HIDE SUBTEXT</span>
+      </div>
+    </div>
   </div>
 
 </body>

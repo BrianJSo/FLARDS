@@ -68,5 +68,24 @@ function answer(){
   else {
     console.log("wrong");
   }
-  nextItem()
+
+  if (list.length == 0) {
+    showScore();
+  }
+  else {
+    nextItem()
+  }
+}
+
+function showScore() {
+  const promptCard = document.querySelector(".prompt");
+  const scoreCard = document.querySelector(".score");
+  const answerDiv = document.querySelector(".answer");
+  const scoreText = document.querySelector(".score .maintext");
+
+  scoreText.innerHTML = `${score}/${initialLength}`
+
+  promptCard.classList.toggle("hide");
+  scoreCard.classList.toggle("hide");
+  answerDiv.classList.toggle("hide");
 }

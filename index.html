@@ -42,7 +42,7 @@
         <button class="btn start" onclick="loadCSV()">
           START
         </button>
-        <button class="btn options" >
+        <button class="btn options" onclick="toggleOptions()">
           OPTIONS
         </button>
       </div>
@@ -52,13 +52,17 @@
 
   <div class="panel options hide">
 
-    <div class="subtextControls">
-      <label class="switch">
+    <div class="menu">
+      <label class="switch subtextControl">
         <input type="checkbox" class="checkbox hide">
         <span class="slider round"></span>
       </label>
-      <span class="toggleLabel">HIDE SUBTEXT</span>
+      <span class="toggleLabel">Hide subtext</span>
     </div>
+    
+    <button class="btn done" onclick="toggleOptions()">
+      DONE
+    </button>
 
   </div>
 

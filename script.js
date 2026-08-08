@@ -1,3 +1,6 @@
+let mainPanel;
+let optionsPanel;
+
 let list = [];
 let answerKey;
 let score;
@@ -6,6 +9,9 @@ let answerInput;
 let subtextToggleOn;
 
 function loadApp(){
+  mainPanel = document.querySelector(".panel.main");
+  optionsPanel = document.querySelector(".panel.options");
+
   const csv = document.querySelector(".csv.input");
   csv.value = localStorage.getItem("csv");
 
@@ -25,7 +31,7 @@ function loadCSV(){
   const titleCard = document.querySelector(".title");
   const promptCard = document.querySelector(".prompt");
   
-  subtextToggleOn = document.querySelector(".subtextControls .checkbox").checked;
+  subtextToggleOn = document.querySelector(".subtextControl .checkbox").checked;
 
   if(subtextToggleOn){
     document.querySelector(".prompt .subtext").classList.toggle("hide");
@@ -95,4 +101,9 @@ function showScore() {
   promptCard.classList.toggle("hide");
   scoreCard.classList.toggle("hide");
   answerDiv.classList.toggle("hide");
+}
+
+function toggleOptions() {
+  mainPanel.classList.toggle("hide");
+  optionsPanel.classList.toggle("hide");
 }

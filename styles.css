@@ -88,7 +88,7 @@ body {
 
 .menu {
   display: flex;
-  margin-top: 4rem;
+  margin: 4rem 0;
   justify-content: center;
   align-items:start;
 }
@@ -137,12 +137,11 @@ body {
 
 .switch {
   position: relative;
-  top: 4px;
   display: inline-block;
-  border: 1px solid var(--card);
-  border-radius: 10px;
-  width: 30px;
-  height: 17px;
+  border-radius: 4rem;
+  width: 8rem;
+  height: 4rem;
+  margin: 1rem;
 }
 
 .slider {
@@ -154,29 +153,30 @@ body {
   bottom: 0;
   background-color: var(--shadow);
   transition: .4s;
-  border-radius: 17px;
+  border-radius: 4rem;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 13px;
-  width: 13px;
-  left: 2px;
-  bottom: 2px;
-  background-color: var(--card);
+  height: 3.75rem;
+  width: 3.75rem;
+  left: 0.125rem;
+  bottom: 0.125rem;
+  background-color: var(--offwhite);
   transition: .4s;
-  border-radius: 50%;
+  border-radius: 4rem;
 }
 
-input:checked + .slider {
+.checkbox:checked + .slider {
   background-color: var(--toggleBlue);
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px var(--toggleBlue);
+.checkbox:checked + .slider:before {
+  transform: translateX(4rem);
 }
 
-input:checked + .slider:before {
-  transform: translateX(13px);
+.toggleLabel{
+  font-size: 3rem;
+  margin: 1rem;
 }

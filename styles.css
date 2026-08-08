@@ -3,134 +3,132 @@
   --card:  rgb(43, 49, 59);
   --shadow:  rgb(25, 27, 29);
   --input:  rgb(228, 239, 249);
-  --inputTxt:  white;
   --inputOutline:  #60717f;
   --enter:  rgb(163, 255, 122);
   --enterTxt:  #57a01a;
   --toggleBlue:  #2196F3;
+  --offwhite: #FAF9F6;
 }
 
 body {
   background-color: var(--bg1);
-  color: white;
-  padding: 5% 10%;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 180%;
+  color: var(--offwhite);
+  padding: 2rem 3rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
 }
 
 .input {
   background-color: var(--bg1);
-  color: var(--inputTxt);
-  padding: 2%;
+  color: inherit;
+  padding: 1rem;
+  font-size: 3rem;
 }
 
 .input::placeholder {
   font-weight: lighter;
-  font-size: 80%;
 }
 
 .btn {
   background-color: var(--card);
-  box-shadow: 5px 5px var(--shadow);
-  color: var(--inputTxt);
-  margin-left: 2%;
-  padding: 16px;
-  border-radius: 26px;
-  border-width: 0;
-  width: fit-content;
-  font-size: 65%;
-  font-weight: bolder;
+  border: none;
+  border-radius: 2rem;
+  box-shadow: .25rem .25rem var(--shadow);
+  color: inherit;
+  font-family: inherit;
+  font-size: 2.3rem;
+  font-weight:600;
+  margin: 0.5rem;
+  padding: 2rem;
+  width: 18rem;
 }
 
 .btn:active {
-  box-shadow: inset 5px 5px var(--shadow);
+  box-shadow: inset .25rem .25rem var(--shadow);
 }
 
 .card {
-  border-radius: 18px;
+  border-radius: 2rem;
   background-color: var(--card);
-  box-shadow: 5px 5px var(--shadow);
+  box-shadow: 0.5rem 0.5rem var(--shadow);
   height: fit-content;
-  padding: 15% 5%;
+  padding: 8rem 0rem;
   position: relative;
 }
 
 .counter {
   position: absolute;
-  top: 10%;
-  right: 5%;
+  top: 3rem;
+  right: 3rem;
   font-weight: lighter;
-  font-size: 60%;
+  font-size: 2.5rem;
 }
 
 .maintext {
-  margin: 0 0 5px;
+  font-size: 9rem;
+  margin: 0 0 1rem;
+}
+
+.prompt .maintext {
+  margin: 0 0 -1rem;
 }
 
 .subtext {
-  font-weight: lighter;
+  font-size: 4rem;
   margin: 0;
 }
 
-.csv {
+.title .subtext {
+  font-size: 2.5rem;
+}
+
+.prompt :is(.maintext, .subtext) {
+  font-family: "Noto Serif SC", serif;
+}
+
+.menu {
   display: flex;
-  margin-top: 5%;
+  margin-top: 4rem;
   justify-content: center;
   align-items:start;
 }
 
-.csv .input {
-  width: 60%;
-  height: 250px;
-  font-size: large;
-  box-shadow: inset 2px 2px var(--shadow);
-  /* border: 1px solid var(--bg1); */
-  border-radius: 12px;
+.menu .input {
+  width: 50%;
+  height: 16rem;
+  box-shadow: inset 0.5rem 0.5rem var(--shadow);
+  border-radius: 1.5rem;
   border-color: var(--card);
 }
 
-.csv .input:focus {
-  outline: 1px inset var(--inputOutline);
+.menu .input:focus {
+  outline: 0.25rem inset var(--inputOutline);
 }
 
-.csv .controls {
+.menu .controls {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 16px;
-  width: 25%;
-}
-
-.csv .subtextControls {
-  margin-top: 10px;
-}
-
-
-.csv .toggleLabel {
-  font-size: 16px;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+  width: 50%;
 }
 
 .answer {
   display: flex;
-  margin-top: 10%;
+  margin-top: 5rem;
   justify-content: center;
   align-items: center;
 }
 
 .answer .input {
   background-color: var(--bg1);
-  color: var(--inputTxt);
+  color: inherit;
   outline: 0;
-  border-width: 0 0 1px;
-  border-color: white;
-  padding: 2%;
+  border-width: 0 0 0.1rem;
+  border-color: var(--offwhite);
+  padding: 1rem;
   width: 40%;
-  font-size: 100%;
   font-weight: bolder;
-  text-align:center
+  text-align: center
 }
 
 .hide {

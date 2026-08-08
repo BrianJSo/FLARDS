@@ -6,7 +6,7 @@ let answerInput;
 let subtextToggleOn;
 
 function loadApp(){
-  const csv = document.querySelector(".csv .input");
+  const csv = document.querySelector(".csv.input");
   csv.value = localStorage.getItem("csv");
 
   answerInput = document.querySelector(".answer .input");
@@ -20,8 +20,8 @@ function loadApp(){
 
 function loadCSV(){
   const answerDiv = document.querySelector(".answer");
-  const csvDiv = document.querySelector(".csv");
-  const csv = document.querySelector(".csv .input").value;
+  const menuDiv = document.querySelector(".menu");
+  const csv = document.querySelector(".csv.input").value;
   const titleCard = document.querySelector(".title");
   const promptCard = document.querySelector(".prompt");
   
@@ -40,7 +40,7 @@ function loadCSV(){
   titleCard.classList.toggle("hide");
   promptCard.classList.toggle("hide");
   answerDiv.classList.toggle("hide");
-  csvDiv.classList.toggle("hide");
+  menuDiv.classList.toggle("hide");
 
   nextItem();
 }

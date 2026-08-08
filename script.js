@@ -1,4 +1,18 @@
 let mainPanel;
+let titleCard;
+let menuDiv;
+let csvInput;
+
+let promptCard;
+let counter;
+let maintext;
+let subtext;
+let answerDiv;
+
+let scoreCard;
+let scoreText;
+let resetDiv;
+
 let optionsPanel;
 
 let list = [];
@@ -12,8 +26,21 @@ function loadApp(){
   mainPanel = document.querySelector(".panel.main");
   optionsPanel = document.querySelector(".panel.options");
 
-  const csv = document.querySelector(".csv.input");
-  csv.value = localStorage.getItem("csv");
+  titleCard = document.querySelector(".title");
+  menuDiv = document.querySelector(".menu");
+  answerDiv = document.querySelector(".answer");
+
+  promptCard = document.querySelector(".prompt");
+  counter = document.querySelector(".counter");
+  maintext = document.querySelector(".prompt .maintext");
+  subtext = document.querySelector(".prompt .subtext");
+
+  scoreCard = document.querySelector(".score");
+  scoreText = document.querySelector(".score .maintext");
+  resetDiv = document.querySelector(".reset");
+
+  csvInput = document.querySelector(".csv.input");
+  csvInput.value = localStorage.getItem("csv");
 
   answerInput = document.querySelector(".answer .input");
 
@@ -25,18 +52,13 @@ function loadApp(){
 }
 
 function loadCSV(){
-  const answerDiv = document.querySelector(".answer");
-  const menuDiv = document.querySelector(".menu");
-  const csv = document.querySelector(".csv.input").value;
-  const titleCard = document.querySelector(".title");
-  const promptCard = document.querySelector(".prompt");
   
   subtextToggleOn = document.querySelector(".subtextControl .checkbox").checked;
-
   if(subtextToggleOn){
     document.querySelector(".prompt .subtext").classList.toggle("hide");
   }
 
+  const csv = csvInput.value;
   localStorage.setItem("csv", csv);
 
   list = csv.split("\n");
@@ -52,10 +74,6 @@ function loadCSV(){
 }
 
 function nextItem() {
-  const maintext = document.querySelector(".prompt .maintext");
-  const subtext = document.querySelector(".prompt .subtext");
-  const counter = document.querySelector(".counter");
-
   const curLength = list.length;
   const itemNum = Math.floor(Math.random() * curLength);
 
@@ -91,19 +109,22 @@ function answer(){
 }
 
 function showScore() {
-  const promptCard = document.querySelector(".prompt");
-  const scoreCard = document.querySelector(".score");
-  const answerDiv = document.querySelector(".answer");
-  const scoreText = document.querySelector(".score .maintext");
-
   scoreText.innerHTML = `${score}/${initialLength}`
 
   promptCard.classList.toggle("hide");
   scoreCard.classList.toggle("hide");
   answerDiv.classList.toggle("hide");
+  resetDiv.classList.toggle("hide");
 }
 
 function toggleOptions() {
   mainPanel.classList.toggle("hide");
   optionsPanel.classList.toggle("hide");
+}
+
+function restart() {
+  scoreCard.classList.toggle("hide");
+  titleCard.classList.toggle("hide");
+  menuDiv.classList.toggle("hide");
+  resetDiv.classList.toggle("hide");
 }

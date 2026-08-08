@@ -3,6 +3,7 @@ let answerKey;
 let score;
 let initialLength;
 let answerInput;
+let subtextToggleOn;
 
 function loadApp(){
   const csv = document.querySelector(".csv .input");
@@ -23,6 +24,12 @@ function loadCSV(){
   const csv = document.querySelector(".csv .input").value;
   const titleCard = document.querySelector(".title");
   const promptCard = document.querySelector(".prompt");
+  
+  subtextToggleOn = document.querySelector(".subtextControls .checkbox").checked;
+
+  if(subtextToggleOn){
+    document.querySelector(".prompt .subtext").classList.toggle("hide");
+  }
 
   localStorage.setItem("csv", csv);
 

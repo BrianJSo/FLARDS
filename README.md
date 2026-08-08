@@ -6,4 +6,4 @@ live site is available at: https://brianjso.github.io/FLARDS/
 - correct answer div
 - wrong answer div
 - score rating
-- hide subtext mode
+- multiple correct answers

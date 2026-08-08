@@ -14,17 +14,16 @@ let scoreText;
 let resetDiv;
 
 let optionsPanel;
+let subtextToggle;
 
 let list = [];
 let answerKey;
 let score;
 let initialLength;
 let answerInput;
-let subtextToggleOn;
 
 function loadApp(){
   mainPanel = document.querySelector(".panel.main");
-  optionsPanel = document.querySelector(".panel.options");
 
   titleCard = document.querySelector(".title");
   menuDiv = document.querySelector(".menu");
@@ -34,15 +33,17 @@ function loadApp(){
   counter = document.querySelector(".counter");
   maintext = document.querySelector(".prompt .maintext");
   subtext = document.querySelector(".prompt .subtext");
+  answerInput = document.querySelector(".answer .input");
 
   scoreCard = document.querySelector(".score");
   scoreText = document.querySelector(".score .maintext");
   resetDiv = document.querySelector(".reset");
 
+  optionsPanel = document.querySelector(".panel.options");
+  subtextToggle = document.querySelector(".subtextControl .checkbox");
+
   csvInput = document.querySelector(".csv.input");
   csvInput.value = localStorage.getItem("csv");
-
-  answerInput = document.querySelector(".answer .input");
 
   answerInput.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
@@ -53,9 +54,13 @@ function loadApp(){
 
 function loadCSV(){
   
-  subtextToggleOn = document.querySelector(".subtextControl .checkbox").checked;
-  if(subtextToggleOn){
-    document.querySelector(".prompt .subtext").classList.toggle("hide");
+  const subtextToggleOn = subtextToggle.checked;
+  const subtextHidden = subtext.classList.contains('hide');
+
+  if(( subtextToggleOn && !subtextHidden)
+  || (!subtextToggleOn &&  subtextHidden) 
+  ){
+    subtext.classList.toggle("hide");
   }
 
   const csv = csvInput.value;
@@ -93,7 +98,7 @@ function nextItem() {
 function answer(){
   const answer = answerInput.value;
 
-  if (answerKey.toLowerCase() == answer.toLowerCase()){
+  if (normalizeStr(answerKey) == normalizeStr(answer)){
     score++;
   }
   else {
@@ -127,4 +132,10 @@ function restart() {
   titleCard.classList.toggle("hide");
   menuDiv.classList.toggle("hide");
   resetDiv.classList.toggle("hide");
+}
+
+// ---------------UTILS----------------
+
+function normalizeStr(str) {
+  return str.toLowerCase().trim();
 }

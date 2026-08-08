@@ -46,12 +46,21 @@ body {
   box-shadow: inset 5px 5px var(--shadow);
 }
 
-.div1 {
+.card {
   border-radius: 18px;
   background-color: var(--card);
   box-shadow: 5px 5px var(--shadow);
   height: fit-content;
   padding: 15% 5%;
+  position: relative;
+}
+
+.counter {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  font-weight: lighter;
+  font-size: 60%;
 }
 
 .maintext {

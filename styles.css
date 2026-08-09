@@ -8,6 +8,10 @@
   --enterTxt:  #57a01a;
   --toggleBlue:  #2196F3;
   --offwhite: #FAF9F6;
+  --correctbg: #00ff87;
+  --correcttxt: #009100;
+  --wrongbg: #ff7070;
+  --wrongtxt: #910000;
 }
 
 body {
@@ -47,14 +51,28 @@ body {
   box-shadow: inset .25rem .25rem var(--shadow);
 }
 
+.cardSpacer {
+  height: 40rem;
+}
+
 .card {
-  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  position: absolute;
+  top: 3rem;
+
+  height: 19rem;
+  width: 54rem;
+
   background-color: var(--card);
+  border-radius: 2rem;
   box-shadow: 0.5rem 0.5rem var(--shadow);
-  height: fit-content;
   padding: 8rem 0rem;
-  position: relative;
   margin-bottom: 5rem;
+
+  backface-visibility: hidden;
 }
 
 .counter {
@@ -178,4 +196,31 @@ body {
 .toggleLabel{
   font-size: 3rem;
   margin: 1rem;
+}
+
+.correct {
+  background-color: var(--correctbg);
+  color: var(--correcttxt);
+}
+
+.wrong {
+  background-color: var(--wrongbg);
+  color: var(--wrongtxt);
+}
+
+:is(.correct, .wrong) .maintext{
+  font-size: 8rem;
+  font-weight: bold;
+}
+
+.flip {
+  transition: transform 0.2s;
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
+}
+
+.card:not(.flip) {
+  transition: transform 0.2s;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
 }

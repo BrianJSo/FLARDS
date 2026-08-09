@@ -9,6 +9,10 @@ let maintext;
 let subtext;
 let answerDiv;
 
+let correctCard;
+let wrongCard;
+let wrongTxt;
+
 let scoreCard;
 let scoreText;
 let resetDiv;
@@ -34,6 +38,10 @@ function loadApp(){
   maintext = document.querySelector(".prompt .maintext");
   subtext = document.querySelector(".prompt .subtext");
   answerInput = document.querySelector(".answer .input");
+
+  correctCard = document.querySelector(".correct");
+  wrongCard = document.querySelector(".wrong");
+  wrongTxt = document.querySelector(".wrong .maintext");
 
   scoreCard = document.querySelector(".score");
   scoreText = document.querySelector(".score .maintext");
@@ -70,8 +78,8 @@ function loadCSV(){
   score = 0;
   initialLength = list.length;
 
-  titleCard.classList.toggle("hide");
-  promptCard.classList.toggle("hide");
+  titleCard.classList.toggle("flip");
+  promptCard.classList.toggle("flip");
   answerDiv.classList.toggle("hide");
   menuDiv.classList.toggle("hide");
 
@@ -82,6 +90,10 @@ function nextItem() {
   const curLength = list.length;
   const itemNum = Math.floor(Math.random() * curLength);
 
+  if (curLength == 0) {
+    showScore();
+    return;
+  }
   const curCount = initialLength - curLength;
 
   counter.innerHTML = `${curCount}/${initialLength}`
@@ -100,24 +112,35 @@ function answer(){
 
   if (normalizeStr(answerKey) == normalizeStr(answer)){
     score++;
+      
+    promptCard.classList.toggle('flip');
+    correctCard.classList.toggle('flip');
+  
+    setTimeout(() => {
+      promptCard.classList.toggle('flip');
+      correctCard.classList.toggle('flip');
+      nextItem()
+    }, 500);
   }
   else {
-    console.log("wrong");
-  }
+    wrongTxt.innerHTML = normalizeStr(answerKey)
 
-  if (list.length == 0) {
-    showScore();
-  }
-  else {
-    nextItem()
+    promptCard.classList.toggle('flip');
+    wrongCard.classList.toggle('flip');
+  
+    setTimeout(() => {
+      promptCard.classList.toggle('flip');
+      wrongCard.classList.toggle('flip');
+      nextItem()
+    }, 2000);
   }
 }
 
 function showScore() {
   scoreText.innerHTML = `${score}/${initialLength}`
 
-  promptCard.classList.toggle("hide");
-  scoreCard.classList.toggle("hide");
+  promptCard.classList.toggle("flip");
+  scoreCard.classList.toggle("flip");
   answerDiv.classList.toggle("hide");
   resetDiv.classList.toggle("hide");
 }
@@ -128,8 +151,8 @@ function toggleOptions() {
 }
 
 function restart() {
-  scoreCard.classList.toggle("hide");
-  titleCard.classList.toggle("hide");
+  scoreCard.classList.toggle("flip");
+  titleCard.classList.toggle("flip");
   menuDiv.classList.toggle("hide");
   resetDiv.classList.toggle("hide");
 }

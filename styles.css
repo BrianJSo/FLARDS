@@ -14,6 +14,34 @@
   --wrongtxt: #910000;
 }
 
+/* ------------FONTS------------ */
+
+.noto-serif-sc {
+  font-family: "Noto Serif SC", serif;
+}
+
+.noto-sans-sc {
+  font-family: "Noto Sans SC", sans-serif;
+}
+
+.zcool-xiaowei {
+  font-family: "ZCOOL XiaoWei", sans-serif;
+}
+
+.long-cang {
+  font-family: "Long Cang", cursive;
+}
+
+.kosugi-maru {
+  font-family: "Kosugi Maru", sans-serif;
+}
+
+.shippori-antique {
+  font-family: "Shippori Antique", sans-serif;
+}
+
+/* ---------END OF FONTS-------- */
+
 body {
   background-color: var(--bg1);
   color: var(--offwhite);
@@ -82,6 +110,33 @@ body {
   backface-visibility: hidden;
 }
 
+.correct {
+  background-color: var(--correctbg);
+  color: var(--correcttxt);
+}
+
+.wrong {
+  background-color: var(--wrongbg);
+  color: var(--wrongtxt);
+}
+
+:is(.correct, .wrong) .maintext{
+  font-size: 8rem;
+  font-weight: bold;
+}
+
+.flip {
+  transition: transform 0.2s;
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
+}
+
+.card:not(.flip) {
+  transition: transform 0.2s;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+}
+
 .counter {
   position: absolute;
   top: 3rem;
@@ -108,17 +163,13 @@ body {
   font-size: 2.5rem;
 }
 
-.prompt :is(.maintext, .subtext) {
-  font-family: "Noto Serif SC", serif;
-}
-
-.menu {
+.main-menu {
   display: flex;
   justify-content: center;
-  align-items:start;
+  align-items: center;
 }
 
-.menu .input {
+.main-menu .input {
   width: 50%;
   height: 16rem;
   box-shadow: inset 0.5rem 0.5rem var(--shadow);
@@ -126,11 +177,11 @@ body {
   border-color: var(--card);
 }
 
-.menu .input:focus {
+.main-menu .input:focus {
   outline: 0.25rem inset var(--inputOutline);
 }
 
-.menu .controls {
+.main-menu .controls {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -153,10 +204,6 @@ body {
   width: 40%;
   font-weight: bolder;
   text-align: center
-}
-
-.hide {
-  display: none;
 }
 
 .switch {
@@ -200,34 +247,57 @@ body {
   transform: translateX(4rem);
 }
 
-.toggleLabel{
+.options .sample {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.options .sample :is(.maintext, .subtext, ::placeholder){
+  width: 50rem;
+  text-align: center;
+  margin: 0 0 -1rem;
+  color: inherit;
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  field-sizing: content;
+}
+
+.options .sample .maintext {
+  align-content: end;
+  margin-bottom: -1rem;
+}
+
+.options .menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.option {
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+.option .label{
   font-size: 3rem;
   margin: 1rem;
 }
 
-.correct {
-  background-color: var(--correctbg);
-  color: var(--correcttxt);
+.options .fonts {
+  background-color: var(--card);
+  color: inherit;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: .25rem .25rem var(--shadow);
+  font-weight: bold; 
+  font-size: 2.5rem;
+  padding: 0 2rem;
 }
 
-.wrong {
-  background-color: var(--wrongbg);
-  color: var(--wrongtxt);
-}
-
-:is(.correct, .wrong) .maintext{
-  font-size: 8rem;
-  font-weight: bold;
-}
-
-.flip {
-  transition: transform 0.2s;
-  transform-style: preserve-3d;
-  transform: rotateY(180deg);
-}
-
-.card:not(.flip) {
-  transition: transform 0.2s;
-  transform-style: preserve-3d;
-  transform: rotateY(0deg);
+.hide {
+  display: none;
 }

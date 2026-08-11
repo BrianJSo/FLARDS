@@ -6,7 +6,7 @@
   <script src="script.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Long+Cang&family=Noto+Sans+SC:wght@100..900&family=Noto+Serif+SC:wght@200..900&family=Shippori+Antique&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
 </head>
 
 <body onload="loadApp()">
@@ -48,7 +48,7 @@
       <button class="btn" onclick="restart()">RESTART</button>
     </div>
 
-    <div class="menu">
+    <div class="main-menu">
       <textarea class="csv input" placeholder="enter your csv here" name="" id="">
         input your csv here
       </textarea>
@@ -56,7 +56,7 @@
         <button class="btn start" onclick="loadCSV()">
           START
         </button>
-        <button class="btn options" onclick="toggleOptions()">
+        <button class="btn" onclick="toggleOptions()">
           OPTIONS
         </button>
       </div>
@@ -66,18 +66,38 @@
 
   <div class="panel options hide">
 
-    <div class="menu">
-      <label class="switch subtextControl">
-        <input type="checkbox" class="checkbox hide">
-        <span class="slider round"></span>
-      </label>
-      <span class="toggleLabel">Hide subtext</span>
-    </div>
-    
-    <button class="btn done" onclick="toggleOptions()">
-      DONE
-    </button>
+    <div class="cardSpacer"></div>
 
+    <div class="card sample">
+      <textarea class="maintext" placeholder="Sample" name="" id="">MainText</textarea>
+      <textarea class="subtext" placeholder="you can edit these texts" name="" id="">you can edit these texts</textarea>
+    </div>
+
+    <div class="menu">
+      <div class="option fontSelector">
+        <span class="label">Font:</span>
+        <select class="fonts" onchange="setFont()" name="fonts" id="fonts">
+          <option class="noto-serif-sc" value="noto-serif-sc">Noto Serif SC</option>
+          <option class="noto-sans-sc" value="noto-sans-sc">Noto Sans SC</option>
+          <option class="zcool-xiaowei" value="zcool-xiaowei">ZCOOL XiaoWei</option>
+          <option class="long-cang" value="long-cang">Long Cang</option>
+          <option class="kosugi-maru" value="kosugi-maru">Kosugi Maru</option>
+          <option class="shippori-antique" value="shippori-antique">Shippori Antique</option>
+        </select>
+      </div>
+      
+      <div class="option">
+        <span class="label">Hide subtext:</span>
+        <label class="switch subtextControl">
+          <input type="checkbox" onclick="toggleSubtext()" class="checkbox hide">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      
+      <button class="btn done" onclick="toggleOptions()">
+        DONE
+      </button>
+    </div>
   </div>
 
 </body>

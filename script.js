@@ -18,6 +18,9 @@ let scoreText;
 let resetDiv;
 
 let optionsPanel;
+let optionsSampleMain;
+let optionsSampleSub;
+let fontSelect;
 let subtextToggle;
 
 let list = [];
@@ -30,7 +33,7 @@ function loadApp(){
   mainPanel = document.querySelector(".panel.main");
 
   titleCard = document.querySelector(".title");
-  menuDiv = document.querySelector(".menu");
+  menuDiv = document.querySelector(".main-menu");
   answerDiv = document.querySelector(".answer");
 
   promptCard = document.querySelector(".prompt");
@@ -49,9 +52,13 @@ function loadApp(){
 
   optionsPanel = document.querySelector(".panel.options");
   subtextToggle = document.querySelector(".subtextControl .checkbox");
+  optionsSampleMain = document.querySelector(".sample .maintext");
+  optionsSampleSub = document.querySelector(".sample .subtext");
+  fontSelect = document.querySelector(".options .fonts");
 
   csvInput = document.querySelector(".csv.input");
-  csvInput.value = localStorage.getItem("csv");
+
+  loadPreferences();
 
   answerInput.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
@@ -60,17 +67,41 @@ function loadApp(){
   }); 
 }
 
-function loadCSV(){
+function loadPreferences() {
+  csvInput.value = localStorage.getItem("csv");
+  fontSelect.value = localStorage.getItem("font");
+  subtextToggle.checked = JSON.parse(localStorage.getItem("hideSubtext"));
+
+  setFont();
+}
+
+function setFont() {
+  const font = fontSelect.value;
   
-  const subtextToggleOn = subtextToggle.checked;
-  const subtextHidden = subtext.classList.contains('hide');
+  optionsSampleMain.setAttribute('class', `maintext ${font}`);
+  optionsSampleSub.setAttribute('class', `subtext ${font}`);
+  maintext.setAttribute('class', `maintext ${font}`);
+  subtext.setAttribute('class', `subtext ${font}`);
+  fontSelect.setAttribute('class', `fonts ${font}`)
 
-  if(( subtextToggleOn && !subtextHidden)
-  || (!subtextToggleOn &&  subtextHidden) 
-  ){
-    subtext.classList.toggle("hide");
+  localStorage.setItem("font", font);
+
+  toggleSubtext();
+}
+
+function toggleSubtext() {
+  const hideSubtext = subtextToggle.checked;
+  if (hideSubtext) {
+    subtext.classList.add("hide");
+    optionsSampleSub.classList.add("hide");
+  } else {
+    subtext.classList.remove("hide");
+    optionsSampleSub.classList.remove("hide");
   }
+  localStorage.setItem("hideSubtext", hideSubtext);
+}
 
+function loadCSV(){
   const csv = csvInput.value;
   localStorage.setItem("csv", csv);
 

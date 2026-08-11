@@ -1,8 +1,9 @@
-let mainPanel;
+let titlePanel;
 let titleCard;
 let menuDiv;
 let csvInput;
 
+let mainPanel;
 let promptCard;
 let counter;
 let maintext;
@@ -13,6 +14,7 @@ let correctCard;
 let wrongCard;
 let wrongTxt;
 
+let scorePanel;
 let scoreCard;
 let scoreText;
 let resetDiv;
@@ -30,12 +32,13 @@ let initialLength;
 let answerInput;
 
 function loadApp(){
-  mainPanel = document.querySelector(".panel.main");
+  titlePanel = document.querySelector(".panel.title");
 
   titleCard = document.querySelector(".title");
   menuDiv = document.querySelector(".main-menu");
   answerDiv = document.querySelector(".answer");
 
+  mainPanel = document.querySelector(".panel.main");
   promptCard = document.querySelector(".prompt");
   counter = document.querySelector(".counter");
   maintext = document.querySelector(".prompt .maintext");
@@ -46,7 +49,8 @@ function loadApp(){
   wrongCard = document.querySelector(".wrong");
   wrongTxt = document.querySelector(".wrong .maintext");
 
-  scoreCard = document.querySelector(".score");
+  scorePanel = document.querySelector(".panel.score");
+  scoreCard = document.querySelector(".card.score");
   scoreText = document.querySelector(".score .maintext");
   resetDiv = document.querySelector(".reset");
 
@@ -109,10 +113,8 @@ function loadCSV(){
   score = 0;
   initialLength = list.length;
 
-  titleCard.classList.toggle("flip");
-  promptCard.classList.toggle("flip");
-  answerDiv.classList.toggle("hide");
-  menuDiv.classList.toggle("hide");
+  titlePanel.classList.toggle("flip");
+  mainPanel.classList.toggle("flip");
 
   nextItem();
 }
@@ -170,22 +172,18 @@ function answer(){
 function showScore() {
   scoreText.innerHTML = `${score}/${initialLength}`
 
-  promptCard.classList.toggle("flip");
-  scoreCard.classList.toggle("flip");
-  answerDiv.classList.toggle("hide");
-  resetDiv.classList.toggle("hide");
+  mainPanel.classList.toggle("flip");
+  scorePanel.classList.toggle("flip");
 }
 
 function toggleOptions() {
-  mainPanel.classList.toggle("hide");
-  optionsPanel.classList.toggle("hide");
+  titlePanel.classList.toggle("flip");
+  optionsPanel.classList.toggle("flip");
 }
 
 function restart() {
-  scoreCard.classList.toggle("flip");
-  titleCard.classList.toggle("flip");
-  menuDiv.classList.toggle("hide");
-  resetDiv.classList.toggle("hide");
+  scorePanel.classList.toggle("flip");
+  titlePanel.classList.toggle("flip");
 }
 
 // ---------------UTILS----------------

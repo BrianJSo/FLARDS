@@ -11,41 +11,11 @@
 
 <body onload="loadApp()">
 
-  <div class="panel main">
-
+  <div class="panel title">
     <div class="cardSpacer"></div>
-
     <div class="card title">
       <h1 class="maintext">FLARDS</h1>
       <p class="subtext">a portmanteau for flash cards</p>
-    </div>
-
-    <div class="card prompt flip">
-      <span class="counter">0/N</span>
-      <p class="maintext">MainText</p>
-      <p class="subtext">SubText</p>
-    </div>
-
-    <div class="card correct flip">
-      <p class="maintext">✓</p>
-    </div>
-
-    <div class="card wrong flip">
-      <p class="maintext">ANSWER</p>
-    </div>
-
-    <div class="card score flip">
-      <h1 class="maintext">Score</h1>
-      <p class="subtext">is your score</p>
-    </div>
-
-    <div class="answer hide">
-      <input class="input" placeholder="answer here..." type="text">
-      <button class="btn" onclick="answer()">ENTER</button>
-    </div>
-
-    <div class="reset hide">
-      <button class="btn" onclick="restart()">RESTART</button>
     </div>
 
     <div class="main-menu">
@@ -64,10 +34,43 @@
 
   </div>
 
-  <div class="panel options hide">
-
+  <div class="panel main flip">
     <div class="cardSpacer"></div>
+    <div class="card prompt">
+      <span class="counter">0/N</span>
+      <p class="maintext">MainText</p>
+      <p class="subtext">SubText</p>
+    </div>
 
+    <div class="card correct flip">
+      <p class="maintext">✓</p>
+    </div>
+
+    <div class="card wrong flip">
+      <p class="maintext">ANSWER</p>
+    </div>
+
+    <div class="answer">
+      <input class="input" placeholder="answer here..." type="text">
+      <button class="btn" onclick="answer()">ENTER</button>
+    </div>
+  </div>
+
+
+  <div class="panel score flip">
+    <div class="cardSpacer"></div>
+    <div class="card score">
+      <h1 class="maintext">Score</h1>
+      <p class="subtext">is your score</p>
+    </div>
+
+    <div class="reset">
+      <button class="btn" onclick="restart()">RESTART</button>
+    </div>
+  </div>
+
+  <div class="panel options flip">
+    <div class="cardSpacer"></div>
     <div class="card sample">
       <textarea class="maintext" placeholder="Sample" name="" id="">MainText</textarea>
       <textarea class="subtext" placeholder="you can edit these texts" name="" id="">you can edit these texts</textarea>

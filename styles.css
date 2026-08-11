@@ -51,10 +51,15 @@ body {
 }
 
 .panel {
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  backface-visibility:hidden;
 }
 
 .input {
@@ -126,13 +131,30 @@ body {
 }
 
 .flip {
-  transition: transform 0.2s;
   transform-style: preserve-3d;
   transform: rotateY(180deg);
 }
 
+.flip.card {
+  opacity: 0;
+  transition:
+    transform 0.2s,
+    opacity 0.1s ease 0.2s
+
+}
+
+.flip.panel {
+  transition: transform 0.5s;
+}
+
 .card:not(.flip) {
   transition: transform 0.2s;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+}
+
+.panel:not(.flip) {
+  transition: transform 0.5s;
   transform-style: preserve-3d;
   transform: rotateY(0deg);
 }

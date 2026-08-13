@@ -32,6 +32,7 @@ let answerKey;
 let score;
 let initialLength;
 let answerInput;
+let answerDisabled;
 
 function loadApp(){
   titlePanel = document.querySelector(".panel.title");
@@ -114,6 +115,7 @@ function loadCSV(){
   list = csv.split("\n");
   score = 0;
   wrongs = '';
+  answerDisabled = true;
   initialLength = list.length;
 
   titlePanel.classList.toggle("flip");
@@ -142,9 +144,15 @@ function nextItem() {
   answerKey           = itemArr[2];
   answerInput.value = '';
   answerInput.focus()
+  answerDisabled = false;
 }
 
 function answer(){
+  if(answerDisabled){
+    return;
+  }
+  answerDisabled = true;
+  
   const answer = answerInput.value;
 
   if (normalizeStr(answerKey) == normalizeStr(answer)){

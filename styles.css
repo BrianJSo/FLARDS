@@ -146,7 +146,10 @@ body {
 }
 
 .flip.panel {
-  transition: transform 0.5s;
+  opacity: 0;
+  transition: 
+    transform 0.5s,
+    opacity 0.1s ease 0.5s
 }
 
 .card:not(.flip) {

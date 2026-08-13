@@ -60,6 +60,7 @@ body {
   justify-content: center;
   align-items: center;
   backface-visibility:hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .input {
@@ -113,6 +114,7 @@ body {
   margin-bottom: 5rem;
 
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .correct {
@@ -276,20 +278,16 @@ body {
 }
 
 .options .sample :is(.maintext, .subtext, ::placeholder){
+  field-sizing: content;
   width: 50rem;
   text-align: center;
-  margin: 0 0 -1rem;
+  min-height: 1lh;
+  margin: -1rem 0 0;
   color: inherit;
   border: none;
   background-color: transparent;
   resize: none;
   outline: none;
-  field-sizing: content;
-}
-
-.options .sample .maintext {
-  align-content: end;
-  margin-bottom: -1rem;
 }
 
 .options .menu {

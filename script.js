@@ -26,6 +26,8 @@ let fontSelect;
 let subtextToggle;
 
 let list = [];
+let prompt;
+let wrongs;
 let answerKey;
 let score;
 let initialLength;
@@ -111,6 +113,7 @@ function loadCSV(){
 
   list = csv.split("\n");
   score = 0;
+  wrongs = '';
   initialLength = list.length;
 
   titlePanel.classList.toggle("flip");
@@ -127,13 +130,14 @@ function nextItem() {
     showScore();
     return;
   }
-  const curCount = initialLength - curLength;
+  const curCount = initialLength - curLength + 1;
 
   counter.innerHTML = `${curCount}/${initialLength}`
   
   const item = list.splice(itemNum,1)[0];
   const itemArr = item.split(",");
-  maintext.innerHTML  = itemArr[0];
+  prompt = normalizeStr(itemArr[0]);
+  maintext.innerHTML  = prompt;
   subtext.innerHTML   = itemArr[1];
   answerKey           = itemArr[2];
   answerInput.value = '';
@@ -156,7 +160,8 @@ function answer(){
     }, 500);
   }
   else {
-    wrongTxt.innerHTML = normalizeStr(answerKey)
+    wrongTxt.innerHTML = normalizeStr(answerKey);
+    wrongs += `\n${prompt} - ${normalizeStr(answerKey)}`;
 
     promptCard.classList.toggle('flip');
     wrongCard.classList.toggle('flip');
@@ -174,6 +179,29 @@ function showScore() {
 
   mainPanel.classList.toggle("flip");
   scorePanel.classList.toggle("flip");
+}
+
+function copyScore(){
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  };
+  const date = new Date().toLocaleString("default", options);
+
+  const mistakes  = initialLength-score;
+
+  navigator.clipboard.writeText(
+`${date}
+✅ ${score}/${initialLength}
+${ mistakes
+?`❌ ${mistakes} mistake${mistakes>1?'s':''}:${wrongs}`
+: 'NO MISTAKES💯' 
+}
+https://brianjso.github.io/FLARDS/`);
 }
 
 function toggleOptions() {

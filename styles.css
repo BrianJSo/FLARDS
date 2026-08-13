@@ -218,6 +218,10 @@ body {
   align-items: center;
 }
 
+.score .menu {
+  display: flex;
+}
+
 .answer .input {
   background-color: var(--bg1);
   color: inherit;

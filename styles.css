@@ -271,16 +271,11 @@ body {
   transform: translateX(4rem);
 }
 
-.options .sample {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .options .sample :is(.maintext, .subtext, ::placeholder){
   field-sizing: content;
   width: 50rem;
   text-align: center;
+  align-self: center;
   min-height: 1lh;
   margin: -1rem 0 0;
   color: inherit;

@@ -3,7 +3,7 @@ is a portmanteau for flash cards
 live site is available at: https://brianjso.github.io/FLARDS/
 
 ## TODO
-- menu and options flipping
-- multiple correct answers
+- random switch mode
+- new input method
 - score rating
 - confetti

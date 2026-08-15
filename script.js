@@ -28,7 +28,7 @@ let subtextToggle;
 let list = [];
 let prompt;
 let wrongs;
-let answerKey;
+let answerKey = [];
 let score;
 let initialLength;
 let answerInput;
@@ -113,6 +113,7 @@ function loadCSV(){
   localStorage.setItem("csv", csv);
 
   list = csv.split("\n");
+  answerKey = [];
   score = 0;
   wrongs = '';
   answerDisabled = true;
@@ -141,7 +142,11 @@ function nextItem() {
   prompt = normalizeStr(itemArr[0]);
   maintext.innerHTML  = prompt;
   subtext.innerHTML   = itemArr[1];
-  answerKey           = itemArr[2];
+
+  answerKey = itemArr
+    .slice(2)
+    .map(item => normalizeStr(item));
+  
   answerInput.value = '';
   answerInput.focus()
   answerDisabled = false;
@@ -155,7 +160,7 @@ function answer(){
   
   const answer = answerInput.value;
 
-  if (normalizeStr(answerKey) == normalizeStr(answer)){
+  if (answerKey.includes(answer)){
     score++;
       
     promptCard.classList.toggle('flip');
@@ -168,8 +173,8 @@ function answer(){
     }, 500);
   }
   else {
-    wrongTxt.innerHTML = normalizeStr(answerKey);
-    wrongs += `\n${prompt} - ${normalizeStr(answerKey)}`;
+    wrongTxt.innerHTML = answerKey[0];
+    wrongs += `\n${prompt} - ${answerKey[0]}`;
 
     promptCard.classList.toggle('flip');
     wrongCard.classList.toggle('flip');

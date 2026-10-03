@@ -182,7 +182,8 @@ body {
 }
 
 .subtext {
-  font-size: 4rem;
+  font-size: 3rem;
+  opacity: 0.2;
   margin: 0;
 }
 

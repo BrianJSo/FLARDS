@@ -24,8 +24,10 @@ let optionsSampleMain;
 let optionsSampleSub;
 let fontSelect;
 let subtextToggle;
+let requeueToggle;
 
 let list = [];
+let item;
 let prompt;
 let wrongs;
 let answerKey = [];
@@ -59,6 +61,7 @@ function loadApp(){
 
   optionsPanel = document.querySelector(".panel.options");
   subtextToggle = document.querySelector(".subtextControl .checkbox");
+  requeueToggle = document.querySelector(".requeueCtrl .checkbox");
   optionsSampleMain = document.querySelector(".sample .maintext");
   optionsSampleSub = document.querySelector(".sample .subtext");
   fontSelect = document.querySelector(".options .fonts");
@@ -78,6 +81,7 @@ function loadPreferences() {
   csvInput.value = localStorage.getItem("csv");
   fontSelect.value = localStorage.getItem("font");
   subtextToggle.checked = JSON.parse(localStorage.getItem("hideSubtext"));
+  requeueToggle.checked = JSON.parse(localStorage.getItem("requeueMistakes"));
 
   setFont();
 }
@@ -111,6 +115,7 @@ function toggleSubtext() {
 function loadCSV(){
   const csv = csvInput.value;
   localStorage.setItem("csv", csv);
+  localStorage.setItem("requeueMistakes", requeueToggle);
 
   list = csv.split("\n");
   answerKey = [];
@@ -137,7 +142,7 @@ function nextItem() {
 
   counter.innerHTML = `${curCount}/${initialLength}`
   
-  const item = list.splice(itemNum,1)[0];
+  item = list.splice(itemNum,1)[0];
   const itemArr = item.split(",");
   prompt = normalizeStr(itemArr[0]);
   maintext.innerHTML  = prompt;
@@ -174,7 +179,13 @@ function answer(){
   }
   else {
     wrongTxt.innerHTML = answerKey[0];
-    wrongs += `\n${prompt} - ${answerKey[0]}`;
+
+    if(requeueToggle){
+      list.push(item);
+    }
+    else{
+      wrongs += `\n${prompt} - ${answerKey[0]}`;
+    }
 
     promptCard.classList.toggle('flip');
     wrongCard.classList.toggle('flip');
